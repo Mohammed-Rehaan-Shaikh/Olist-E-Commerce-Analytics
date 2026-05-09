@@ -22,7 +22,22 @@ SELECT
 FROM order_reviews;
 
 --Average Delivery Days
-SELECT
+SELECT 
+    ROUND(
+        AVG(
+            EXTRACT(
+                DAY FROM (
+                    order_delivered_customer_date -
+                    order_purchase_timestamp
+                )
+            )
+        )::numeric,
+        2
+    ) AS avg_delivery_days
+FROM orders
+WHERE order_delivered_customer_date IS NOT NULL;
+--OR
+SELECT 
     ROUND(
         AVG(
             DATE_PART(
@@ -30,7 +45,7 @@ SELECT
                 order_delivered_customer_date -
                 order_purchase_timestamp
             )
-        ),
+        )::numeric,
         2
     ) AS avg_delivery_days
 FROM orders
