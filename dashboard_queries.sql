@@ -101,3 +101,21 @@ SELECT
 FROM order_reviews
 GROUP BY review_score
 ORDER BY review_score;
+
+--Average Delivery Days by Customer State
+SELECT c.customer_state, AVG(o.order_delivered_customer_date - o.order_purchase_timestamp) AS avg_delivery_days
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE o.order_delivered_customer_date IS NOT NULL
+GROUP BY c.customer_state;
+
+SELECT 
+    c.customer_state,
+    JUSTIFY_INTERVAL(
+        AVG(o.order_delivered_customer_date - o.order_purchase_timestamp)
+    ) AS avg_delivery_time
+FROM orders o
+JOIN customers c 
+    ON o.customer_id = c.customer_id
+WHERE o.order_delivered_customer_date IS NOT NULL
+GROUP BY c.customer_state;
