@@ -19,12 +19,19 @@ The project includes:
 
 # Tools & Technologies
 
+## Analytics & Visualization
+
 - PostgreSQL
 - Power BI
-- SQL
 - DAX
-- Python
+
+## Development Environment
+
 - VS Code
+
+## Version Control & Project Hosting
+
+- Git
 - GitHub
 
 ---
@@ -129,7 +136,7 @@ olist-ecommerce-analytics/
 │   └── product_category_name_translation.csv
 │
 ├── dashboard/
-│   └── olist-ecommerce-analytics.pbix
+│   └── olist-ecommerce-analytics.pdf
 │
 ├── dashboard-previews/
 │   ├── sales_overview.png
